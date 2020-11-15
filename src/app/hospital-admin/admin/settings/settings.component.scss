@@ -1,0 +1,33 @@
+.remove_top_bottom_padding.mat-raised-button {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background: #e0e0e0;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    /* margin: 13px 0 0; */
+    margin-top: 1px\9;
+    /* line-height: normal; */
+    font-size: 36px !important;
+    width: 20px;
+    height: 20px;
+}
+
+.btn-success-gray {
+    background: #686968fa !important;
+    color: white !important;
+}
+
+.pills>.nav>li.active>a {
+    background: #50636d!important;
+    color: #fff;
+}
+
+.errorBorderClass {
+    border-color: red !important;
+}
+::ng-deep .mat-optgroup-label {
+    color: black !important;
+    background: #007ad926 !important;
+  }

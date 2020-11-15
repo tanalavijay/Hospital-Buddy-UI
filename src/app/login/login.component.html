@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="h-100 login-bg">
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" fxFlex="80" fxFlex.gt-sm="30" fxFlex.sm="60" style="position: relative;
+         left: 29%;
+         top: 0%;
+         margin-bottom: 11%;">
+
+            <mat-card class="p-0 mat-elevation-z24 box">
+                <div fxLayout="column" fxLayoutAlign="center center" class="bg-primary box-header" >
+                    <img alt="logo" class="logo-default logo-img" style="height: 60px;margin-bottom: 20px;" src="../../assets/img/HOSPITAL BUDDY.png">
+                    <!-- <a mat-button routerLink="/register">Don't have an account? Sign up now!</a> -->
+                </div>
+                <mat-card-content fxLayout="column" fxLayoutAlign="end center" class="box-content">
+                    <mat-card fxLayout="column" fxLayoutAlign="center center" class="mat-elevation-z12 box-content-inner"> 
+                        <mat-form-field class="w-100">
+                            <input matInput placeholder="Email ID" formControlName="email">
+                            <mat-error *ngIf="form.controls.email.errors?.required">Email ID is required</mat-error>
+                            <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="w-100">
+                            <input matInput placeholder="Password" [type]=TypeString formControlName="password">
+                            <mat-icon *ngIf="showpass" matSuffix style="cursor: pointer;  font-size: 14px!important;" (click)="ChangetextType(isPassword = ! isPassword)">remove_red_eye</mat-icon>
+                            <i *ngIf="!showpass" matSuffix style="cursor: pointer;  font-size: 14px!important;" (click)="ChangetextType(isPassword = ! isPassword)" class="fa fa-eye-slash" aria-hidden="true"></i>
+                            <mat-error *ngIf="form.controls.password.errors?.required">Password is required</mat-error>
+                            <mat-error *ngIf="form.controls.password.hasError('minlength')">Password isn't long enough,
+                                minimum of 6 characters</mat-error>
+                        </mat-form-field>
+                    </mat-card>
+                    <button mat-raised-button color="primary" class="mat-elevation-z12 box-button"  type="submit">SIGN IN</button>
+                </mat-card-content>
+            </mat-card>
+
+        </form>
+
+    </div>
+
+</mat-sidenav-container>

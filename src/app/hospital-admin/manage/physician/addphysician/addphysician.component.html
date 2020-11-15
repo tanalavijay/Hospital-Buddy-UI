@@ -1,0 +1,66 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+      Add Physician
+    </h1>
+  </div>
+  <div mat-dialog-content>
+      <form class="form-horizontal">  
+          <div class="form-group">
+              <label class="control-label col-sm-4 add-member-label">Physician Name: </label>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <input  class="form-control"  placeholder="Enter Physician Name">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Email ID: </label>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <input  class="form-control"  placeholder="Enter Email ID">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Contact Number: </label>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <input type="text" class="form-control" placeholder="Enter Contact Number ">
+              </div>
+          </div>
+          <div  class="form-group">
+              <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4" > Is Referring Physician: </label>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="margin-top: 10px;">
+                  <mat-radio-group id="primary" name="primary">
+                      <mat-radio-button  style="margin-right: 10px;" value="true">Yes</mat-radio-button>
+                      <mat-radio-button  value="false">No</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-sm-4 add-member-label">State: </label>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <mat-select placeholder="-- Select State --" class="form-control">
+                      <mat-option value="1">New York</mat-option>
+                      <mat-option value="2">Mexico</mat-option>
+                  </mat-select>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-sm-4 add-member-label">City: </label>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <mat-select placeholder="-- Select City --" class="form-control">
+                      <mat-option value="1">New York</mat-option>
+                      <mat-option value="2">Mexico</mat-option>
+                  </mat-select>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Address: </label>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                  <textarea rows="2" class="form-control txtarea" id="content" placeholder="Write here"></textarea>
+              </div>
+          </div>
+
+      </form>
+  </div>
+  <mat-dialog-actions align="end">
+      <button mat-raised-button class="btn-primary" (click)="close()"><span> Save </span></button>
+      <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+  </mat-dialog-actions> 
+

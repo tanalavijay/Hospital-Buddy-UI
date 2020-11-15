@@ -1,0 +1,32 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    Add CPT Code
+  </h1>
+</div>
+<div mat-dialog-content>
+    <form class="form-horizontal">  
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">CPT Code: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input  class="form-control"  placeholder="Enter CPT Code">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Price: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input  class="form-control" placeholder="Enter Price">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">CPT Description: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <textarea rows="2" class="form-control txtarea" id="content" placeholder="Write here"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="btn-primary" (click)="close()"><span> Save </span></button>
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+</mat-dialog-actions> 
+

@@ -1,0 +1,248 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    <span *ngIf="!admin" class="title-left">Add</span>
+    <span *ngIf="admin" class="title-left">Update</span> Admin
+  </h1>
+</div> 
+<mat-horizontal-stepper #stepper>
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate [formGroup]="adminBasicDetailsForm">
+        <ng-template matStepLabel>Admin Details</ng-template>
+        <div class="col-sm-12" style="padding-right:7px">
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Admin Name:&nbsp;</label>
+            <div class="col-sm-8">
+              <input type="text" formControlName="adminName" class="form-control" placeholder="Enter Admin Name" required/>
+              <div *ngIf="!adminName.valid && (adminName.dirty || adminName.touched)" class="error-text">
+                <div *ngIf="adminName.errors.required">
+                  Admin name is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Email ID:&nbsp;</label>
+            <div class="col-sm-8">
+              <input type="text" email formControlName="emailId" class="form-control" placeholder="Enter Email ID" required/>
+              <div *ngIf="!emailId.valid && (emailId.dirty || emailId.touched)" class="error-text">
+                <div *ngIf="emailId.errors.required">
+                  Admin Email is required
+                </div>
+                <div *ngIf="emailId.errors.email">
+                  Enter a valid email
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Contact Name:&nbsp;</label>
+            <div class="col-sm-8">
+              <input type="text" formControlName="contactName" class="form-control" placeholder="Enter Contact Name" required/>
+              <div *ngIf="!contactName.valid && (contactName.dirty || contactName.touched)" class="error-text">
+                <div *ngIf="contactName.errors.required">
+                  Contact Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Contact Number:&nbsp;</label>
+            <div class="col-sm-8">
+              <input type="text" formControlName="contactNumber" class="form-control" placeholder="Enter Contact Number" required/>
+              <div *ngIf="!contactNumber.valid && (contactNumber.dirty || contactNumber.touched)" class="error-text">
+                <div *ngIf="contactNumber.errors.required">
+                  Contact Number is required
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">State:&nbsp;</label>
+            <div class="col-sm-8">
+              <mat-select formControlName="state" placeholder="--Select State--" class="form-control" required>
+                <mat-option *ngFor="let option of states" [value]="option.state_id">{{option.state_name}}</mat-option>
+              </mat-select>
+              <div *ngIf="!state.valid && (state.dirty || state.touched)" class="error-text">
+                <div *ngIf="state.errors.required">
+                  State is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">City:&nbsp;</label>
+            <div class="col-sm-8">
+              <mat-select formControlName="city" placeholder="--Select City--" class="form-control" required>
+                <mat-option *ngFor="let option of cities" [value]="option.city_id">{{option.city_name}}</mat-option>
+              </mat-select>
+              <div *ngIf="!city.valid && (city.dirty || city.touched)" class="error-text">
+                <div *ngIf="city.errors.required">
+                  City is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Address:&nbsp;</label>
+            <div class="col-sm-8">
+              <textarea rows="2" formControlName="address" class="form-control txtarea" placeholder="Enter Address" required></textarea>
+              <div *ngIf="!address.valid && (address.dirty || address.touched)" class="error-text">
+                <div *ngIf="address.errors.required">
+                  Address is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <mat-dialog-actions class="col-sm-12" align="end">
+      <button mat-raised-button [disabled]="!adminBasicDetailsForm.valid" [ngClass]="!adminBasicDetailsForm.valid ? '' : 'btn-primary'" ><mat-icon>arrow_forward</mat-icon>&nbsp;Proceed</button>
+      <button mat-raised-button class="CancelClass" (click)="close()"><mat-icon>cancel</mat-icon>&nbsp;Close</button>
+    </mat-dialog-actions>
+  </mat-step>
+  
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate [formGroup]="adminBillingForm">
+        <div class="col-sm-12" style="padding-right:7px !important">
+          <ng-template matStepLabel>Billing Details</ng-template>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Billing Email ID:&nbsp;</label>
+            <div class="col-sm-8">
+              <input type="text" email formControlName="billingemailId" class="form-control" placeholder="Enter Billing Email ID" required/>
+              <div *ngIf="!billingemailId.valid && (billingemailId.dirty || billingemailId.touched)" class="error-text">
+                <div *ngIf="billingemailId.errors.required">
+                  Billing Email is required
+                </div>
+                <div *ngIf="billingemailId.errors.email">
+                  Enter a valid email
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Package Level:&nbsp;</label>
+            <div class="col-sm-8">
+              <mat-select  placeholder="--Select Package--" class="form-control" required>
+                <mat-option *ngFor="let option of package" [value]="option.package_id">{{option.package_name}}</mat-option>
+              </mat-select>
+              <!-- <div *ngIf="!billingstate.valid && (billingstate.dirty || billingstate.touched)" class="error-text">
+                <div *ngIf="billingstate.errors.required">
+                  State is required
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div  class="form-group">
+            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Auto Renewal: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="margin-top: 10px;">
+                <mat-radio-group id="primary" name="primary">
+                    <mat-radio-button  style="margin-right: 10px;" value="true">Yes</mat-radio-button>
+                    <mat-radio-button  value="false">No</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">State:&nbsp;</label>
+            <div class="col-sm-8">
+              <mat-select formControlName="billingstate" placeholder="--Select State--" class="form-control" required>
+                <mat-option *ngFor="let option of states" [value]="option.state_id">{{option.state_name}}</mat-option>
+              </mat-select>
+              <div *ngIf="!billingstate.valid && (billingstate.dirty || billingstate.touched)" class="error-text">
+                <div *ngIf="billingstate.errors.required">
+                  State is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">City:&nbsp;</label>
+            <div class="col-sm-8">
+              <mat-select formControlName="billingcity" placeholder="--Select City--" class="form-control" required>
+                <mat-option *ngFor="let option of cities" [value]="option.city_id">{{option.city_name}}</mat-option>
+              </mat-select>
+              <div *ngIf="!billingcity.valid && (billingcity.dirty || billingcity.touched)" class="error-text">
+                <div *ngIf="billingcity.errors.required">
+                  City is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Address:&nbsp;</label>
+            <div class="col-sm-8">
+              <textarea rows="2" formControlName="billingaddress" class="form-control txtarea" placeholder="Enter Billing Address" required></textarea>
+              <div *ngIf="!billingaddress.valid && (billingaddress.dirty || billingaddress.touched)" class="error-text">
+                <div *ngIf="billingaddress.errors.required">
+                  Billing Address is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <mat-dialog-actions class="col-sm-12" align="end">
+        <button mat-raised-button class="btn-primary" matStepperPrevious><mat-icon>arrow_back</mat-icon>&nbsp;Back</button>
+        <button mat-raised-button [disabled]="!adminBasicDetailsForm.valid" [ngClass]="!adminBasicDetailsForm.valid ? '' : 'btn-primary'" ><mat-icon>arrow_forward</mat-icon>&nbsp;Proceed</button>
+        <button mat-raised-button class="CancelClass" (click)="close()"><mat-icon>cancel</mat-icon>&nbsp;Close</button>
+    </mat-dialog-actions>
+  </mat-step>
+  
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate>
+        <ng-template matStepLabel>Credit Card Details</ng-template>
+        <div class="col-sm-12" style="padding-right:7px">
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Card Number:&nbsp;</label>
+            <div class="col-sm-8">
+              <input type="text"  class="form-control" placeholder="Enter Card Number" required/>
+            
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Exp Date:&nbsp;</label>
+            <div class="col-sm-8">
+              <input type="text"  class="form-control" placeholder="Enter Exp Date" required/>
+            </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-sm-4 add-member-label">CVV:&nbsp;</label>
+              <div class="col-sm-8">
+                <input type="text" formControlName="contactNumber" class="form-control" placeholder="Enter CVV" required/>
+                <!-- <div *ngIf="!contactNumber.valid && (contactNumber.dirty || contactNumber.touched)" class="error-text">
+                  <div *ngIf="contactNumber.errors.required">
+                    Contact Number is required
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Card Holder Name:&nbsp;</label>
+            <div class="col-sm-8">
+              <input type="text" formControlName="contactName" class="form-control" placeholder="Enter Card Holder Name " required/>
+              <!-- <div *ngIf="!contactName.valid && (contactName.dirty || contactName.touched)" class="error-text">
+                <div *ngIf="contactName.errors.required">
+                  Contact Name is required
+                </div>
+              </div> -->
+            </div>
+          </div>
+         
+        </div>
+      </form>
+    </div>
+      <mat-dialog-actions class="col-sm-12" align="end">
+        <button mat-raised-button class="btn-primary" matStepperPrevious><mat-icon>arrow_back</mat-icon>&nbsp;Back</button>
+        <button *ngIf="!admin" mat-raised-button [disabled]="(!adminBasicDetailsForm.valid || !adminBillingForm.valid)" (click)="saveAdmin()" [ngClass]="(!adminBasicDetailsForm.valid || !adminBillingForm.valid ) ? '':'btn-primary'" ><mat-icon>save</mat-icon>&nbsp;Save</button>
+        <button *ngIf="admin" mat-raised-button (click)="saveAdmin()" [disabled]="(!adminBasicDetailsForm.valid || !adminBillingForm.valid)" [ngClass]="(!adminBasicDetailsForm.valid || !adminBillingForm.valid ) ? '':'btn-primary'"><mat-icon>update</mat-icon>&nbsp;Update</button>
+        <button mat-raised-button class="CancelClass" (click)="close()"><mat-icon>cancel</mat-icon>&nbsp;Close</button>
+      </mat-dialog-actions>
+   
+  </mat-step>
+
+</mat-horizontal-stepper>

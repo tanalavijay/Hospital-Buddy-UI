@@ -1,0 +1,58 @@
+<div fxLayout="row wrap" style="margin-top: 50px;">
+    <div class="w-100" style="margin-left: 10px;margin-right: 10px;">
+        <table class="table table-bordered table-responsive-md btn-table table-hover">
+            <thead class="tbl-head">
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Previous Value</th>
+                    <th>New Value</th>
+                    <th class="text-center" style="min-width: 65px;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Notification Email</td>
+                    <td>Default Notification Email</td>
+                    <td>admin@hospitalbuddy.com</td>
+                    <td>
+                        <input type="email" class="form-control" placeholder="Enter Notification Email">
+                    </td>
+                    <td class="text-center">
+                      <button type="button" style="margin-right: 10px; text-decoration: none" class="btn btn-primary"
+                      mwlConfirmationPopover
+                      [popoverTitle]="popoverStatusTitle"
+                      [popoverMessage]="popoverStatusMessage"
+                      placement="left"
+                      (confirm)="cancelClicked = true"
+                      (cancel)="cancelClicked = true">
+                          Save
+                  </button>
+                  </td>
+                </tr>
+                <tr>
+                    <td>Grid Length</td>
+                    <td>Default Grid Length</td>
+                    <td>10</td>
+                    <td>
+                        <input type="number" class="form-control" placeholder="Enter New Value">
+                    </td>
+                   
+                    <td class="text-center">
+                      <button type="button" style="margin-right: 10px; text-decoration: none" class="btn btn-primary"
+                      mwlConfirmationPopover
+                      [popoverTitle]="popoverStatusTitle"
+                      [popoverMessage]="popoverStatusMessage"
+                      placement="left"
+                      (confirm)="cancelClicked = true"
+                      (cancel)="cancelClicked = true">
+                          Save
+                  </button>
+                  </td>
+                </tr>
+  
+            </tbody>
+        </table>
+  
+    </div>
+  </div>

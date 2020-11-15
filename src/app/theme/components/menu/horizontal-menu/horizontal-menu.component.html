@@ -1,0 +1,90 @@
+
+<!-- 
+
+<div [fxLayout]="(menuParentId == 0) ? 'row' : 'column'" fxLayoutAlign="start center">
+    <div *ngFor="let menu of menuItems" class="horizontal-menu-item w-100">
+         <a *ngIf="menu.routerLink && !menu.hasSubMenu" mat-button fxLayout="row" [fxLayoutAlign]="(settings.menuType=='default') ? 'start center' : 'center center'"
+            [routerLink]="[menu.routerLink]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"
+            [matTooltip]="menu.title" matTooltipPosition="above" [matTooltipDisabled]="(settings.menuType=='mini') ? 'false' : 'true'"
+            [id]="'horizontal-menu-item-'+menu.id" class="test">
+            <mat-icon class="horizontal-menu-icon">{{menu.icon}}</mat-icon>
+            <span class="horizontal-menu-title" [ngStyle]="{color:menu.color}">{{menu.title}}</span>
+        </a>
+         <a *ngIf="menu.href && !menu.subMenu" mat-button fxLayout="row" [routerLink]="[menu.routerLink]"
+            routerLinkActive="active-link" [fxLayoutAlign]="(settings.menuType=='default') ? 'start center' : 'center center'"
+            [attr.href]="menu.href || ''" [attr.target]="menu.target || ''" [matTooltip]="menu.title"
+            matTooltipPosition="above" [matTooltipDisabled]="(settings.menuType=='mini') ? 'false' : 'true'" [id]="'horizontal-menu-item-'+menu.id">
+            <mat-icon class="horizontal-menu-icon">{{menu.icon}}</mat-icon>
+            <span class="horizontal-menu-title" [ngStyle]="{color:menu.color}">{{menu.title}}</span>
+        </a> 
+        <a *ngIf="menu.hasSubMenu" mat-button fxLayout="row" [routerLink]="[menu.routerLink]" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"
+            [fxLayoutAlign]="(settings.menuType=='default') ? 'start center' : 'center center'" [matTooltip]="menu.title"
+            matTooltipPosition="above" [matTooltipDisabled]="(settings.menuType=='mini') ? 'false' : 'true'" [id]="'horizontal-menu-item-'+menu.id">
+            <mat-icon class="horizontal-menu-icon">{{menu.icon}}</mat-icon>
+            <span class="horizontal-menu-title" [ngStyle]="{color:menu.color}">{{menu.title}}</span>
+        </a>
+
+        <div *ngIf="menu.hasSubMenu" class="horizontal-sub-menu" [id]="'horizontal-sub-menu-'+menu.id">
+            <app-horizontal-menu [menuParentId]="menu.id"></app-horizontal-menu>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="w-100 footer" fxLayoutAlign="start center">
+        <span class="footer-content">  © 2002-{{currentYear}} Option Matrix InfoTech. </span>
+    </div> -->
+
+
+
+    <div [fxLayout]="(menuParentId == 0) ? 'row' : 'column'" fxLayoutAlign="center center">
+        <div *ngFor="let menu of menuItems;"  class="horizontal-menu-item w-100">
+            <a *ngIf="menu.routerLink && !menu.hasSubMenu " mat-button fxLayout="row"
+                [fxLayoutAlign]="(settings.menuType=='default') ? 'start center' : 'center center'" [routerLink]="[menu.routerLink]" (click)="checkMenuLink(menu.id)"
+                routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" [matTooltip]="menu.title"
+                matTooltipPosition="above" [matTooltipDisabled]="(settings.menuType=='mini') ? 'false' : 'true'" [id]="'horizontal-menu-item-'+menu.id">
+                <mat-icon class="horizontal-menu-icon">{{menu.icon}}</mat-icon>
+                <span class="horizontal-menu-title" [ngStyle]="{color:menu.color}">{{menu.title}}</span>
+            </a>
+            <a *ngIf="menu.href && !menu.subMenu" mat-button fxLayout="row" [routerLink]="[menu.routerLink]" (click)="checkMenuLink(menu.id)"
+                routerLinkActive="active-link" [fxLayoutAlign]="(settings.menuType=='default') ? 'start center' : 'center center'"
+                [attr.href]="menu.href || ''" [attr.target]="menu.target || ''" [matTooltip]="menu.title"
+                matTooltipPosition="above" [matTooltipDisabled]="(settings.menuType=='mini') ? 'false' : 'true'" [id]="'horizontal-menu-item-'+menu.id">
+                <mat-icon class="horizontal-menu-icon">{{menu.icon}}</mat-icon>
+                <span class="horizontal-menu-title" [ngStyle]="{color:menu.color}">{{menu.title}}</span>
+            </a>
+            <a *ngIf="menu.routerLink && menu.hasSubMenu" mat-button fxLayout="row" [routerLink]="[menu.routerLink]" (click)="checkMenuLink(menu.id)"
+                routerLinkActive="active-link" [fxLayoutAlign]="(settings.menuType=='default') ? 'start center' : 'center center'"
+                [matTooltip]="menu.title" matTooltipPosition="above" [matTooltipDisabled]="(settings.menuType=='mini') ? 'false' : 'true'"
+                [id]="'horizontal-menu-item-'+menu.id">
+                <mat-icon class="horizontal-menu-icon">{{menu.icon}}</mat-icon>
+                <span class="horizontal-menu-title" [ngStyle]="{color:menu.color}">{{menu.title}}</span>
+            </a>
+
+
+            <a *ngIf="!menu.routerLink && menu.hasSubMenu" mat-button fxLayout="row" (click)="checkMenuLink(menu.id)"
+            routerLinkActive="active-link" [fxLayoutAlign]="(settings.menuType=='default') ? 'start center' : 'center center'"
+            [matTooltip]="menu.title" matTooltipPosition="above" [matTooltipDisabled]="(settings.menuType=='mini') ? 'false' : 'true'"
+            [id]="'horizontal-menu-item-'+menu.id">
+            <mat-icon class="horizontal-menu-icon">{{menu.icon}}</mat-icon>
+            <span class="horizontal-menu-title" [ngStyle]="{color:menu.color}">{{menu.title}}</span>
+        </a>
+    
+            <div *ngIf="menu.hasSubMenu" class="horizontal-sub-menu" [id]="'horizontal-sub-menu-'+menu.id">
+                <app-horizontal-menu [menuParentId]="menu.id"></app-horizontal-menu>
+            </div>
+        </div>
+    </div>
+
+    <!-- <tour-step-template>
+        <ng-template let-step="step">
+          <p class="tour-step-content">{{step?.content}}</p>
+          <div class="tour-step-navigation" style="text-align: center;">
+            <button [disabled]="!tourService.hasPrev(step)" class="btn btn-success"  (click)="tourService.prev()">« Prev</button>
+            <button [disabled]="!tourService.hasNext(step)" class="btn btn-success" style="margin-left: 10px !important;" (click)="tourService.next()">Next »</button>
+            <button class="btn CancelClass" style="margin-left: 10px !important;" (click)="tourService.end()">End</button>
+          </div>
+        </ng-template>
+        
+      </tour-step-template> -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>

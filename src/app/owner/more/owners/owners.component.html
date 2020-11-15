@@ -1,0 +1,125 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+
+      <div class="row" style="margin-bottom:14px;">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+                '  <button mat-raised-button class="pull-right btn-primary" (click)="openUserDialog(null)">
+                      <mat-icon>person_add</mat-icon> Add User
+                  </button>'
+                  <!-- <button mat-raised-button color="primary" style="color: white !important;" class="pull-right filter-hover margin-right-10">
+                      <mat-icon>filter_list</mat-icon> Filter
+                  </button> -->
+              </div>
+          </div>
+      </div>
+
+      <!-- <div fxLayout="row wrap" *ngIf="filterToggle" style="padding-bottom: 20px">
+          <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="w-100">
+              <mat-card class="filter">
+                  <mat-card-content>
+                      <div class="row col-sm-12">
+                          <div class="col-sm-4">
+                              <div class="col-sm-4">Assigned Role</div>
+                              <div class="col-sm-8">
+                                  <mat-select name="" id="" placeholder="-- Select Role --" class="form-control">
+                                      <mat-option [value]=1>Project Managers</mat-option>
+                                      <mat-option [value]=2>Production Team</mat-option>
+                                      <mat-option [value]=3>Project Admin</mat-option>
+                                      <mat-option [value]=4>Administration</mat-option>
+                                      <mat-option [value]=5>Field Staff</mat-option>
+                                      <mat-option [value]=6>CAD Staff</mat-option>
+                                      <mat-option [value]=7>Finance</mat-option>
+                                  </mat-select>
+                              </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="col-sm-4">Status</div>
+                              <div class="col-sm-8">
+                                  <mat-select class='select-option form-control' placeholder="--Search by Status--">
+                                      <mat-option [value]="1">Any</mat-option>
+                                      <mat-option [value]="2">Active</mat-option>
+                                      <mat-option [value]="3">Inactive</mat-option>
+                                  </mat-select>
+                              </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="col-sm-4">Keyword</div>
+                              <div class="col-sm-8">
+                                  <input type="text" class="form-control" placeholder="Enter Keyword" />
+                              </div>
+                          </div>
+                      </div>
+                     
+                      <div class="row col-sm-12" style="margin-top:20px">
+                          <div class="col-sm-8"></div>
+                         
+                          <div class="col-sm-4" >
+                              <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px;">
+                                  <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                              </a>
+                              <button mat-raised-button class="pull-right btn-success-gray" style="margin-left: 10px;margin-right: 8px;">
+                                  <mat-icon>settings_backup_restore</mat-icon> Reset
+                              </button>
+                              <button mat-raised-button class="pull-right add-hover btn-success">
+                                  <mat-icon>cloud_download</mat-icon> Download CSV
+                              </button>
+                              <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10">
+                                  <mat-icon>youtube_searched_for</mat-icon> Search
+                              </button>
+                          </div>
+
+                      </div>
+
+                  </mat-card-content>
+              </mat-card>
+          </div>
+      </div> -->
+
+      <div fxLayout="row wrap">
+          <div class="table-responsive">
+              <table id="example2" class="table table-bordered table-hover">
+                  <thead class="tbl-head">
+                      <tr class="tr-grid-header">
+                          <th>User Name</th>
+                          <th>Email</th>
+                          <th>Contact Number</th>
+                          <!-- <th class="text-center">Permissions</th>  
+                          <th class="text-center">User Type</th> -->
+                          <th class="text-center">Status</th>
+                          <th class="text-center">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let item of tableList">
+                          <td>{{item.name}}</td>
+                          <td>{{item.email}}</td>
+                          <td>{{item.phone}}</td>
+                          <!-- <td class="inner-screen text-center">{{item.permissions}}</td>
+                          <td class="text-center">{{item.usertype}}</td> -->
+                          <td class="pad-left inner-screen text-center">
+                              <a (click)="item.status = ! item.status">
+                                  <span *ngIf="item.status" style="color:#246ade">Inactive</span>
+                                  <span *ngIf="!item.status" style="color:red" >Active</span>
+                              </a>
+                          </td>
+                          <td class="text-center">
+                              <a matTooltip="Edit User" style="margin-right: 10px; cursor: pointer;font-size:16px!important;color:#0987e8d1" (click)="openUserDialog(null)">
+                                <i class="fa fa-edit"></i>
+                              </a>
+                              <a>
+                                <i style="cursor: pointer;font-size:16px!important;" matTooltip="Delete User" class="fa fa-trash red" (click)="openDeleteDialog(null)"></i>
+                              </a>
+                            </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+

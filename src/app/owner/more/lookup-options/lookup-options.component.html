@@ -1,0 +1,45 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="w-100">
+      <div class="row" style="margin-bottom:14px;">
+              <div class="col-sm-12">
+              <div class="w-100 flex-p">
+                      <button mat-raised-button class="pull-right  btn-primary" (click)="openLookupDialog(null)" style="margin-right: 10px;">
+                        <mat-icon>add</mat-icon> Add Lookup
+                    </button>
+              </div>
+          </div>
+      </div>
+
+      <div class="table-responsive col-sm-12">
+          <table id="example2" class="table table-bordered table-hover table-striped">
+              <thead class="tbl-head">
+                  <tr class="tr-grid-header">
+                      <th>Code</th>
+                      <th>Lookups</th>
+                      <th class="text-center">Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of tableList">
+                      <td>{{item.code}}</td>
+                      <td>{{item.options}}</td>
+                      <td class="text-center">
+                          <a (click)="openUserDialog(item)" style="margin-right: 10px; cursor: pointer;">
+                              <i matTooltip="Edit Details" class="fa fa-edit" style="color: cornflowerblue"></i>
+                          </a>
+                          <a (click)="openDeleteDialog(item)" >
+                                      <i style="cursor: pointer;" matTooltip="Delete" class="fa fa-trash red"></i>
+                                  </a>
+                              
+                          
+                      </td>
+
+                  </tr>
+              </tbody>
+          </table>
+
+      </div>
+  </div>
+
+</div>
+

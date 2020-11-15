@@ -1,0 +1,50 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    <span *ngIf="!user" class="title-left">Add</span>
+    <span *ngIf="user" class="title-left">Update</span> Lookup
+  </h1>
+</div>
+
+<div mat-dialog-content>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-3 add-member-label">Code Master : </label>
+            <div class="col-sm-8">
+                <mat-select class="form-control" [(ngModel)]="code_master" placeholder="--Select Code--" id="code" name="code" >
+                    <mat-option value="usertype">CID Code </mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+       
+        <div class="form-group" *ngIf="code_master == 'usertype' || code_master == undefined">
+            <label class="control-label col-sm-3 add-member-label">Lookup Name : </label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control" id="name" placeholder="Enter Lookup name">
+            </div>
+            <div class="col-sm-1" style="margin-top: 5px;">
+                <a (click)="copy('lookup')"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+        <div *ngIf="code_master == 'usertype'" >
+            <div *ngFor="let item of itemstr, let x = index">
+                <div id="repeat-{{x}}" class="row" style="margin-bottom: 12px;">
+                    <!-- text input -->
+                    <label class="control-label col-sm-3 add-member-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control name" id="items"
+                            placeholder="Enter Lookup Name" type="text"  >
+                    </div>
+                    <div class="col-sm-1" style="margin-top: 5px;">
+                        <a (click)="remove(x)"><i class="fa fa-trash red"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="add-hover btn-primary" (click)="saveLookup()" [mat-dialog-close]="'test'"><span *ngIf="user">Save</span><span
+            *ngIf="!user">Update</span></button>
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Cancel</button>
+</mat-dialog-actions> 
