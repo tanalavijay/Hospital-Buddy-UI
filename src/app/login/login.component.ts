@@ -15,6 +15,7 @@ import { emailValidator } from "../theme/utils/app-validators";
 })
 export class LoginComponent {
   public TypeString: string = "password";
+  public showpass:boolean = false;
   public isPassword: boolean = true;
   public form: FormGroup;
   public settings: Settings;

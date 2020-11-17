@@ -74,6 +74,10 @@ export class ReferringphysicianComponent implements OnInit {
     this.fleet_filter = '';
     this.monthlyForm.setValue('');
   }
+
+  openPhysicianDialog(stat) {
+
+  }
 }
 
 
